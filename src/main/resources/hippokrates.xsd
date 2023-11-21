@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="https://kopr.ics.upjs.sk"
+        elementFormDefault="qualified">
+
+    <element name="search">
+        <complexType>
+            <sequence>
+                <element name="personId" type="int" minOccurs="1"/>
+                <element name="dateIdentifier" type="string" minOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="report">
+        <complexType>
+            <sequence>
+                <element name="reportText" type="string" />
+            </sequence>
+        </complexType>
+    </element>
+</schema>

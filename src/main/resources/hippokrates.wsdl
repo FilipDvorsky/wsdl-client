@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        targetNamespace="https://kopr.ics.upjs.sk"
+		xmlns:kopr="https://kopr.ics.upjs.sk"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="https://kopr.ics.upjs.sk">
+			<include schemaLocation="hippokrates.xsd"/>
+		</schema>
+	</types>
+
+	<message name="getVisitReportRequest">
+		<part name="part" element="kopr:search"/>
+	</message>
+
+	<message name="getVisitReportResponse">
+		<part name="part" element="kopr:report"/>
+	</message>
+
+	<portType name="visitReportPortType">
+		<operation name="search">
+			<input message="kopr:getVisitReportRequest"/>
+			<output message="kopr:getVisitReportResponse"/>
+		</operation>
+	</portType>
+
+	<binding name="visitReportBinding" type="kopr:visitReportPortType">
+		<soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="search">
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+
+	<service name="visitReportService">
+		<port name="visitReportPort" binding="kopr:visitReportBinding">
+			<soap:address location="http://localhost:8080/hospital"/>
+		</port>
+	</service>
+</definitions>
